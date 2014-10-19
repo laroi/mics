@@ -1,0 +1,107 @@
+.photoCommentContainer{
+	height: 500px;
+	margin-top: 4%;
+	width:80%;
+}
+
+.uploadCommentContainer {
+	height: 40px;
+	border: 1px solid black;
+	margin-top: 2%;
+	padding: 2%;
+}
+
+.commentBody {
+	width:60%;
+	float: left;
+}
+
+#uploadCommentText {
+	width: 100%;
+}
+
+.showCommentsContainer {
+	height: 80%;
+	overflow: auto;
+	border: 1px solid black;
+}
+
+.commentsCount {
+	width: 50px;
+	height: 50px;
+	background-color: grey;
+	float: right;
+	line-height: 50px;
+	text-align: center;
+}
+
+.indComment {
+	padding-left: 2%;
+	padding-top: 2%;
+	margin: 1%;
+	overflow: hidden;
+	background-color: khaki;
+	border-radius: 10px;
+}
+
+.commentBy {
+	width: auto;
+	float: left;
+	margin-right: 2%;
+	font-weight: bold;
+	background-color: green;
+	padding: .75%;
+	border-radius: 5px;
+}
+
+.commentText {
+	width: auto;
+	float: left;
+	margin-right: 2%;
+}
+
+.commentTime {
+	float: right;
+	font-style: italic;
+}
+.albumCoverIndCont{
+	width: 47%;
+	height: 47%;
+	float: left;
+	overflow: hidden;
+	text-align: center;
+	padding: 1%;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+.albumImgContainer{
+	overflow: hidden;
+	height: 100%;
+}
+.indCoverImg {
+	height: 100%;
+	width:100%;
+}
+.nextPage, .prevPage,.photoNextPage, .photoPrevPage {
+	width:50px;
+	height: 50px;
+	float: left;
+	margin-left: 10px;
+
+}
+.nextPage,.photoNextPage {
+	background-image: url('../images/next.png');
+	background-repeat: no-repeat;		
+}
+.nextPage:hover,.photoNextPage:hover {
+	background-image: url('../images/next_hvr.png');
+	background-repeat: no-repeat;
+}
+.prevPage, .photoPrevPage {
+	background-image: url('../images/prev.png');
+	background-repeat: no-repeat;
+}
+.prevPage:hover, .photoPrevPage:hover {
+	background-image: url('../images/prev_hvr.png');
+	background-repeat: no-repeat;
+}

@@ -1,0 +1,22 @@
+<script type="text/html" id="navbarTemplate">
+	<div class='navbarContainer'>
+        <div class="leftContainer">
+
+            <div class='app'>
+                <div class= "appLogo"></div>
+            </div>
+            <div class="btnback icons" id= "toLand"></div>
+            <div id = "uploadButton" class=" createAlbum icons"></div>
+            <div id="photoUploadButton" class="icons"></div>                    
+        </div>
+        <div class="rightContainer">
+        {{#if user}}
+            <div class="logout icons"></div>        
+            <div class="user">
+                <div class="userName">{{user}}</div>
+                <div class="userPhoto"></div>
+            </div>
+        {{/if}}
+        </div>
+    </div>
+</script>

@@ -1,0 +1,28 @@
+<script type="text/html" id="loginPageTemplate">
+	<div id="landingContainer">
+        <div class="landingHeader">
+            <div id="uploadButton" class="icons"></div>
+        </div>
+        <div class="prevPage"></div>
+        <div class="albumMainContainer">
+            {{#each data}}
+                <div class="albumIndContainer" id={{{this.id}}}>
+                    <div class='albumImgContainer'>
+                    </div>
+                    <div class="albumTitle">
+                        <div class="uploadBy albumFooterElement">
+                            {{this.createdBy}}
+                        </div>
+                        <div class="title albumFooterElement">
+                            {{this.name}}
+                        </div>
+                        <div class="uploadTime albumFooterElement">
+                            {{this.createdTime}}
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+         <div class="nextPage"></div>       
+    </div>
+</script>

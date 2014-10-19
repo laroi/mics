@@ -1,0 +1,91 @@
+<script type="text/html" id="loginPageTemplate">
+	<div id="photoContainer">
+         <div class="photoPrevPage"></div>
+        <div class="photoMainContainer">
+            {{#each data}}
+                <div class="photoIndContainer" id={{{@index}}}>
+                    <div class="photoImage_{{{@index}}}">
+                    {{getPhotoImage this}}
+                        <div class="photoTitle">
+                            <div class="photoUploadBy albumFooterElement">
+                                {{this.createdBy}}
+                            </div>
+                            <div class="photoName albumFooterElement">
+                                {{this.title}}
+                            </div>
+                            <div class="photoTime albumFooterElement">
+                                {{this.createdTime}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+        <div class="photoNextPage"></div>
+           
+        <div class='overlay'> 
+        </div>
+        <div class='photoDetailsContainer'>
+            <div class='photoDetIndCont'>
+                <div class='downloadImage icons'></div>
+                <div class='close icons'></div>
+                <div class='showNext icons'></div>
+                <div class='photo'></div>
+                <div class='showPrev icons'></div>
+            </div>
+            <div class='photoDetDetCont'>
+                <div class='photoDetTextContainer'>
+                    <div class='photoDetTitle'></div>
+                    <div class='photoDetDescription'></div>
+                </div>
+                <div class='photoBtnContainer'>
+                    <div class='photoBtnInd'>
+                        <div class='photoBtnLike'> 
+                        </div>
+                        <div class='photoBtnLikeCount photoCount'>
+                        </div>    
+                    </div>
+                    <div class='photoBtnInd'>
+                        <div class='photoBtnDislike'> 
+                        </div>
+                        <div class='photoBtnDislikeCount photoCount'>
+                        </div>    
+                    </div>
+                    <div class='photoBtnInd'>
+                        <div class='photoBtnLove'> 
+                        </div>
+                        <div class='photoBtnLoveCount photoCount'>
+                        </div>    
+                    </div>
+                    <div class='photoBtnInd'>
+                        <div class='photoBtnBull'>
+                        </div>
+                        <div class='photoBtnBullCount photoCount'>
+                        </div>    
+                    </div>
+                    <!--<div class='photoBtnInd'>
+                    <div class='photoBtnUndo'></div>
+                    </div>-->
+                </div>
+                <div class='commentsCount'></div>
+                <div class='photoCommentContainer'>
+                    <div class="showCommentsContainer">
+
+                    </div>
+                    <div class='uploadCommentContainer'>
+                        <div class='commentBody'>
+                            <textarea rows = '1' id='uploadCommentText'/>
+                        </div>
+                        <div class='commentUploadButton'>
+                            <div id='uploadCommentButton' class='icons upload'> </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class='photoFullScreen'></div>
+        <div id="actedUserListContainer"></div>
+    </div>
+
+</script>

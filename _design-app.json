@@ -1,0 +1,31 @@
+{
+    "rewrites" : [
+          {
+              "for" : "Database API access",
+              "from": "db",
+              "to"  : "../../"
+          },
+          {
+               "from": "db/*",
+                "to"  : "../../*"
+          }, 
+          {
+              "for" : "Access to data inside the ddoc",
+              "from": "ddoc",
+              "to"  : ""
+          },
+          {
+              "from": "ddoc/*",
+              "to"  : "*"
+          },
+          {
+                "from" : "",
+                "to" : "index.html"
+          },
+          {
+            "from" : "*",
+            "to" : "*"
+          }
+    ],
+    "createdBy" : "Your Name"
+}

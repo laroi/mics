@@ -1,0 +1,71 @@
+.navbarContainer {
+	overflow: hidden;
+}
+
+.leftContainer {
+	width: 45%;
+	overflow: hidden;
+	height: 35px;
+	float: left;
+}
+
+.rightContainer {
+    width: 45%;
+    float: left;
+}
+
+.userName{
+	height: 100%;
+	line-height: 35px;
+}
+
+.user {
+	float: right;
+	height: 100%;
+}
+
+.logout {
+	float: right;	
+	background-image: url('../images/logout.png');
+}
+
+.logout:hover{
+	background-image: url('../images/logout_hvr.png');
+}
+#uploadButton {
+	
+}
+.btnback{
+	float: left;
+	background-image: url('../images/back.png');
+	visibility: hidden;
+}
+.btnback:hover{
+	background-image: url('../images/back_hvr.png');	
+}
+.icons {
+	width: 34px;
+	height: 34px;
+	cursor: pointer;
+	margin-left: 25px;
+}
+
+#nav_bar {
+	width: 100%;
+	overflow: hidden;
+	background-color: #bababa;
+	border: 1px solid black;
+}
+.createAlbum {
+	background-image: url('../images/upload.png');
+	float: left;
+	visibility: hidden;
+}
+#photoUploadButton {
+	background-image: url('../images/upload.png');
+	float: left;
+	visibility: hidden;	
+}
+#photoUploadButton:hover, .createAlbum:hover{
+	background-image: url('../images/upload_hvr.png');	
+}

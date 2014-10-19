@@ -1,0 +1,31 @@
+#actedUserListContainer{
+	display: none;
+	position: absolute;
+	top: 15%;
+	right: 0;
+	background-color: aqua;
+	z-index: 162;
+	opacity: 1;
+	margin-right: 15px;
+	width: 250px;
+	max-height: 500px;
+	overflow: auto;
+}
+.actedUserListContainer{
+	overflow: hidden;
+}
+.actedUsedInd {
+	margin-left:5%;
+	margin-top: 5%;
+}
+
+.close_list {
+	width:25px;
+	height:25px;
+	background-color: red;
+	float:right;
+}
+.actedUserListTitle{
+	width:50%;
+	float:left;
+}
