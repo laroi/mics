@@ -1,0 +1,10 @@
+{
+   "_id": "_design/getThumbnail",
+   "_rev": "2-4d4af6a9f8e3201b6ef412c0f0c6919e",
+   "language": "javascript",
+   "views": {
+       "byAlbum": {
+           "map": "function(doc) {\n\tif(doc.type === \"PSA.Photo\"){\n\t\temit(doc.album,doc.fileName)\n\t}\n}"
+       }
+   }
+}

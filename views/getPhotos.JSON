@@ -1,0 +1,11 @@
+{
+   "_id": "_design/getPhotos",
+   "_rev": "14-6ad43d4381d258b3b9bd8931bb0623b0",
+   "language": "javascript",
+   "views": {
+       "byDate": {
+           "map": "function(doc) {\n\tif(doc.type === \"PSA.Photo\"){\n\t\temit([doc.album, new Date(doc.createdTime).getTime()],doc)\n\t}\n}",
+           "reduce": "_count"
+       }
+   }
+}

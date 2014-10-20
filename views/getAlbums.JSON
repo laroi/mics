@@ -1,0 +1,18 @@
+{
+   "_id": "_design/getAlbums",
+   "_rev": "21-aefd9c34afbeb3a970643bef33208136",
+   "language": "javascript",
+   "views": {
+       "byTime": {
+           "map": "function(doc) {\nif(doc.type && doc.type === \"PSA.Album\"){\n  emit([new Date(doc.createdTime).getTime()], {\"rev\":doc._rev, name:doc.name,createdBy: doc.createdBy, createdTime: doc.createdTime, blocked: doc.blocked, likes: doc.likes, comments: doc.comments});\n}\n}",
+           "reduce": "_count"
+       },
+       "byUser": {
+           "map": "function(doc) {\nif(doc.type && doc.type === \"PSA.Album\"){\n  emit([doc.createdBy], 1);\n}\n}"
+       },
+       "byName": {
+           "map": "function(doc) {\nif(doc.type && doc.type === \"PSA.Album\"){\n  emit(doc.name, 1);\n}\n}",
+           "reduce": "_sum"
+       }
+   }
+}

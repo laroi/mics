@@ -1,0 +1,10 @@
+{
+   "_id": "_design/getUser",
+   "_rev": "2-228b1e66f0bd77403682bdf7de3775f0",
+   "language": "javascript",
+   "views": {
+       "byName": {
+           "map": "function(doc) {\nif(doc.type === \"PSA.User\"){\n  emit([doc.name], doc);\n}\n}"
+       }
+   }
+}
