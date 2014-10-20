@@ -22,6 +22,8 @@ define(["text!views/templates/photoTemplate.html",
 		currentPage = 1,
 		noOfItems = 1,
 		totalItems,
+		downloadImage,
+		convertImgToBase64,
 		comPhotoTemplate = Handlebars.compile($(photoTemplate).html());
 		Handlebars.registerHelper('getPhotoImage', function(obj) {
 			var result = '<img id="photoImg" src="http://'+window.location.host + '/photos/' + obj.id + '/' + obj.fileName + '" width="200" height="200"/>';
@@ -34,6 +36,32 @@ define(["text!views/templates/photoTemplate.html",
 
 		//this function will check if the user has already done any actions on the photo, if yes
 		//returns the action. otherwise null
+		convertImgToBase64 = function (url, callback){
+		    var canvas = document.createElement('CANVAS'),
+		        ctx = canvas.getContext('2d'),
+		        img = new Image;
+		    img.crossOrigin = 'Anonymous';
+		    img.onload = function(){
+		        var dataURL;
+		        canvas.height = img.height;
+		        canvas.width = img.width;
+		        ctx.drawImage(img, 0, 0);
+		        dataURL = canvas.toDataURL("image/jpg");
+		        callback.call(this, dataURL);
+		        canvas = null; 
+		    };
+		    img.src = url;
+		};
+		downloadImage = function(){
+			var url = "http://"+window.location.host + "/photos/"+photoArray[localStorage.selectedPhotoIndex].id+"/"+photoArray[localStorage.selectedPhotoIndex].fileName;
+			$("#downloadImageLink").attr('href', url);
+			$("#downloadImageLink").attr('target', "_blank");
+			/*convertImgToBase64(url,function(context) {
+				$("#downloadImageLink").attr('href', context);
+				$("#downloadImageLink").attr('download', "mics_"+photoArray[localStorage.selectedPhotoIndex].id.substring(-1, 5)+"jpg");
+
+			})*/
+		}
 		checkHasActed = function (callback) {
 			var i, hasActed = null;
 			if(photoArray[localStorage.selectedPhotoIndex].likes){
@@ -75,6 +103,25 @@ define(["text!views/templates/photoTemplate.html",
 			$('.photoBtnDislikeCount').empty().append(photoArray[localStorage.selectedPhotoIndex].disLikes.length);
 			$('.photoBtnLoveCount').empty().append(photoArray[localStorage.selectedPhotoIndex].loves.length);
 			$('.photoBtnBullCount').empty().append(photoArray[localStorage.selectedPhotoIndex].craps.length);
+			if(parseInt($(".photoBtnLikeCount").text(), 10) > 0){
+					$(".photoBtnLikeCount").die().live('click', photoController.likedUsers)
+					$(".photoBtnLikeCount").css("cursor", "pointer")
+				}
+				if(parseInt($(".photoBtnDislikeCount").text(), 10) > 0){
+					$(".photoBtnDislikeCount").die().live('click', photoController.dislikedUsers)
+					$(".photoBtnDislikeCount").css("cursor", "pointer")
+				}
+				if(parseInt($(".photoBtnLoveCount").text(), 10) > 0){
+					$(".photoBtnLoveCount").die().live('click', photoController.lovedUsers)
+					$(".photoBtnLoveCount").css("cursor", "pointer")
+				}
+				if(parseInt($(".photoBtnBullCount").text(), 10) > 0){
+					$(".photoBtnBullCount").die().live('click', photoController.crappedUsers)
+					$(".photoBtnBullCount").css("cursor", "pointer")
+				}
+				$('body').click(function(){
+					$("#actedUserListContainer").hide();
+				});
 		}
 		updateTitleAndDesc = function () {
 			$('.photoDetTitle').empty().append(photoArray[parseInt(localStorage.selectedPhotoIndex,10)].title || "");
@@ -298,6 +345,7 @@ define(["text!views/templates/photoTemplate.html",
 						updateAction();
 						enableAction();
 						updateComments();
+						downloadImage();
 						$('#uploadCommentButton').unbind().bind('click',uploadComments);
 
 						
@@ -340,6 +388,7 @@ define(["text!views/templates/photoTemplate.html",
 							enableAction();
 							updateTitleAndDesc();
 							updateComments();
+							downloadImage();
 						}
 					}
 					else if($('.showPrev').index(e.target) > -1){
@@ -353,19 +402,14 @@ define(["text!views/templates/photoTemplate.html",
 							enableAction();
 							updateTitleAndDesc();
 							updateComments();
+							downloadImage();
 						}
 					}
 				});
 				$("#photoUploadButton").live('click', function(){
 					uploadNewPhoto.getUploadPage();
 				});
-				$(".photoBtnLikeCount").die().live('click', photoController.likedUsers)
-				$(".photoBtnDislikeCount").die().live('click', photoController.dislikedUsers)
-				$(".photoBtnLoveCount").die().live('click', photoController.lovedUsers)
-				$(".photoBtnBullCount").die().live('click', photoController.crappedUsers)
-				$('body').click(function(){
-					$("#actedUserListContainer").hide();
-				});
+
 				
 				
 			});

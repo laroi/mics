@@ -287,3 +287,7 @@ body {
  .photoCount {
  	margin-left: 30%;
  }
+ #eg{
+ 	float: left;
+ 	margin-left: 50%;
+ }

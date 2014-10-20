@@ -17,7 +17,21 @@ define([
 		currentUser,
 		comLoginTemplate = Handlebars.compile($(loginTemplate).html()),
 		loginEvent,
+		validateUser,
+		validatePassword,
 		signUpEvent;
+		validateUser = function(user){
+			if(user.length < 3) {
+				return false;
+			}
+			return true;
+		};
+		validatePassword = function(password) {
+			if(password.length ===0 || password.length < 6) {
+				return false;
+			} 
+			return true;
+		}
 	loginEvent = function (inUsername, inPassword) {
 				var username,
 					password;
@@ -55,16 +69,28 @@ define([
 			password;
 		username = $("#signupUserName").val().trim();
 		password = $("#signupPassword").val().trim();
+		if(!validateUser(username)) {
+			alert ("Invalid User name");
+			return false;
+		}
+		if(!validatePassword(password)) {
+			alert ("Invalid password");
+			return false;
+		}
 		doc = {
 			_id: "org.couchdb.user:"+username,
 			name: username
 		};
 
 		requestObj.signup(doc,password,function(data){
-			if(data.name !== null){
+			if(data.name && data.name !== null){
 				loginEvent(username, password);
 				//Success sign up
-			}		
+			} else if (data = 409) {
+				alert("User name exists");
+			} else {
+				alert("some error has happened");
+			}	
 		});
 	}
 		

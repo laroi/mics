@@ -79,8 +79,9 @@ define([], function () {
 				    	});
 				         
 				    },
-				    error: function(status) {
+				    error: function(status, xhr, error) {
 				        console.log(status);
+				        callback(status);
 				    }
 				});
 			},
